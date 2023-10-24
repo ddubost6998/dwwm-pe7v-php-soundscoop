@@ -5,7 +5,7 @@ require_once 'layout/header.php';
 <main class="w-4/5 mx-auto mt-32">
     <h1 class="text-center">Bienvenue sur SoundScoop</h1>
 
-    <div class="bg-gray-100">
+    <div class="my-32 bg-gray-100">
         <a href="article1.php" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
             <img class="object-cover w-full md:h-auto md:rounded-none md:rounded-l-lg" src='https://www.pioneerdj.com/-/media/pioneerdj/images/products/controller/ddj-flx10/pc-cgi_angle.png' alt='Table de mixage Pionner DJ DDJ-FLX10'/>
             <div class="flex flex-col justify-between p-4 leading-normal">
@@ -35,8 +35,8 @@ require_once 'layout/header.php';
         </a>
     </div>
 
-    <div>
-        <h2 class="text-end mt-32">À propos de nous</h2>
+    <div class="my-32">
+        <h2 class="text-end">À propos de nous</h2>
         
         <p class="text-end mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam soluta tempore, nesciunt aliquid quae aliquam adipisci. Accusantium aliquam libero aliquid atque, quidem rerum eaque assumenda dolorum ad impedit natus quod!</p>
         
@@ -47,6 +47,22 @@ require_once 'layout/header.php';
             </svg>
         </div>
     </div>
+
+    <div class="my-32 grid grid-cols-2 gap-2">
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+            </div>
+        </div>
+
 </main>
 
 <?php require_once 'layout/footer.php';
