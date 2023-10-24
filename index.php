@@ -1,5 +1,17 @@
 <?php
 require_once 'layout/header.php';
+require_once 'functions/db.php';
+
+$pdo = getConnection();
+
+$stmt = $pdo->query("SELECT * FROM users");
+
+if ($stmt === false) {
+    echo "Erreur lors de la requête";
+    exit;
+}
+
+
 ?>
 
 <main class="w-4/5 mx-auto mt-32">
