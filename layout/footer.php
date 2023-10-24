@@ -6,7 +6,7 @@
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Admin</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="connexion.php" class="hover:underline">Se connecter</a>
+                            <a href="login.php" class="hover:underline">Se connecter</a>
                         </li>
                     </ul>
                 </div>
