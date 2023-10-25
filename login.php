@@ -2,7 +2,7 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="prose mx-auto mt-32">
+<main class="prose mx-auto mt-24">
     <div class="mx-auto flex flex-col items-center justify-center">
         <div class="bg-purple-100 dark:bg-purple-900 w-full m-16 rounded-lg shadow-lg">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">

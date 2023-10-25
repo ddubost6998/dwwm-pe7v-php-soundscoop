@@ -2,7 +2,7 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="prose mx-auto mt-32">
+<main class="prose mx-auto mt-24">
     <h1 class="text-center">Tout nos articles</h1>
 
     <a href="article1.php" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">

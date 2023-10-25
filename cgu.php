@@ -2,7 +2,7 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="prose mx-auto mt-32 mb-32">
+<main class="prose mx-auto mt-24 mb-32">
     <h1 class="text-center">Conditions générales</h1>
 
     <p>Dernière mise à jour : 19 octobre 2023</p>

@@ -16,7 +16,7 @@ if ($stmt === false) {
 
 ?>
 
-<main class="w-4/5 mx-auto mt-32">
+<main class="w-4/5 mx-auto mt-24">
     <h1 class="text-center">Bienvenue sur SoundScoop</h1>
 
     <div class="my-32 bg-gray-100">

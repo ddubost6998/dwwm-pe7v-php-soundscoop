@@ -2,7 +2,7 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="prose mx-auto mt-32">
+<main class="prose mx-auto mt-24">
     <h1 class="text-center">À propos de SoundScoop</h1>
 
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.<br>
