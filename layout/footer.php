@@ -1,4 +1,4 @@
-    <footer class="bg-purple-50 dark:bg-gray-900">
+    <footer class="bg-purple-50 dark:bg-gray-900 bottom-0 left-0 z-20 w-full">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">

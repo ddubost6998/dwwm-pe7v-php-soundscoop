@@ -21,7 +21,7 @@ try {
         'email'          => $email,
         'hashedPassword' => $hashedPassword
     ]);
-    Utils::redirect('register_success.php');
+    Utils::redirect('login_success.php');
 } catch (PDOException) {
-    Utils::redirect('register.php?error=' . AppError::DB_CONNECTION);
+    Utils::redirect('login.php?error=' . AppError::DB_CONNECTION);
 }

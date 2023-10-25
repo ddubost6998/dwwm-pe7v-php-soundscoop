@@ -4,7 +4,9 @@ require_once 'functions/db.php';
 
 $pdo = getConnection();
 
-$stmt = $pdo->query("SELECT * FROM users");
+var_dump($pdo);
+
+$stmt = $pdo->query("SELECT * FROM article");
 
 if ($stmt === false) {
     echo "Erreur lors de la requête";
