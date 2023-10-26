@@ -7,7 +7,7 @@ require_once 'layout/header.php';
         <div class="bg-purple-100 dark:bg-purple-900 w-full m-16 rounded-lg shadow-lg">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 
-                <h1 class="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Connectez-vous</h1>
+                <h1 class="font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Connectez-vous</h1>
                 
                 <form action="login_success.php" method="POST" class="space-y-4 md:space-y-6">
                     <div>
