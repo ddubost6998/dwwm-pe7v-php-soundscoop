@@ -2,12 +2,12 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="prose mx-auto mt-24">
-    <h1 class="text-center">À propos de SoundScoop</h1>
+<main class="w-2/3 mx-auto mt-24">
+    <h1 class="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">À propos de SoundScoop</h1>
 
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.<br>
     
-    <p class="text-gray-500 dark:text-gray-400">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
+    <p class="text-purple-600 dark:text-gray-400">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
     <div class="inline-flex items-center justify-center w-full">
         <hr class="w-64 h-1 my-8 bg-gray-200 border-0 rounded dark:bg-gray-700">
         <div class="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-900">

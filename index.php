@@ -10,12 +10,10 @@ if ($stmt === false) {
     echo "Erreur lors de la requête";
     exit;
 }
-
-
 ?>
 
 <main class="w-4/5 mx-auto mt-24">
-    <h1 class="text-center">Bienvenue sur SoundScoop</h1>
+    <h1 class="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Bienvenue sur SoundScoop</h1>
 
     <div class="my-32">
         <a href="article1.php" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
