@@ -1,4 +1,6 @@
 <?php
+require_once 'classes/Utils.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
@@ -17,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     mail($to, $subject, $message_body, $headers);
 
-    header("Location: contact_success.php");
+    Utils::redirect("contact_success.php");
 }
 
-header("Location: contact.php");
+Utils::redirect("contact.php");
 ?>

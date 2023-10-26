@@ -9,7 +9,7 @@ require_once 'layout/header.php';
 
                 <h1 class="text-center">Nous contacter</h1>
 
-                <form method="POST">
+                <form method="POST" action="contact_process.php">
                     <div class="grid md:grid-cols-2 md:gap-6">
                         <div class="relative z-0 w-full mb-6 group">
                             <input type="text" name="first_name" id="first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
@@ -101,8 +101,8 @@ require_once 'layout/header.php';
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="editor" class="sr-only">Publish post</label>
-                            <textarea id="editor" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Votre texte..." required></textarea>
+                            <label for="message" class="sr-only">Publish post</label>
+                            <textarea name="message" id="message" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Votre texte..." required></textarea>
                         </div>
                     </div>
                     <button type="submit" class="bg-purple-600 hover:bg-purple-700 dark:bg-purple-200 dark:hover:bg-purple-500 dark:text-gray-900 w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">Envoyer</button>
