@@ -7,7 +7,7 @@ require_once 'layout/header.php';
         <div class="bg-purple-100 dark:bg-purple-900 w-full m-16 rounded-lg shadow-lg">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 
-                <h1 class="text-center">Nous contacter</h1>
+                <h1 class="text-center dark:text-white">Nous contacter</h1>
 
                 <form method="POST" action="contact_process.php">
                     <div class="grid md:grid-cols-2 md:gap-6">

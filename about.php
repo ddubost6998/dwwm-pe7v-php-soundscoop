@@ -2,8 +2,8 @@
 require_once 'layout/header.php';
 ?>
 
-<main class="w-2/3 mx-auto mt-24">
-    <h1 class="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">À propos de SoundScoop</h1>
+<main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-blue-500">
+    <h1 class="text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">À propos de SoundScoop</h1>
 
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.<br>
     
