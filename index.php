@@ -12,7 +12,7 @@ if ($stmt === false) {
 }
 ?>
 
-<main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-blue-500">
+<main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-purple-500">
     <h1 class="text-center dark:text-white">Bienvenue sur SoundScoop</h1>
 
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -38,12 +38,12 @@ if ($stmt === false) {
         
         <p class="text-end mt-3">Le site propose des actualités musicales à jour, couvrant divers genres et artistes, avec des articles informatifs sur les derniers événements musicaux. Mise en avant d'artistes émergents et établis, avec des biographies, des interviews, et des performances en direct. Les lecteurs peuvent explorer des articles spécifiques sur leurs genres musicaux préférés, du rock à l'électronique en passant par le jazz.</p>
         
-        <div class="flex flex-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        <input type="button" value="En savoir plus">
+        <a href="about.php" class="w-40 flex flex-end justify-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <input type="button" value="En savoir plus">
             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
-        </div>
+        </a>
     </div>
 
     <div class="my-32">

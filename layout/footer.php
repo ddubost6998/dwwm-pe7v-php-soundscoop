@@ -1,7 +1,7 @@
     <footer class="bg-purple-50 dark:bg-gray-900 bottom-0 left-0 z-20 w-full">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between mb-8">
-                <div class="grid grid-cols-2 gap-8 sm:gap-10 sm:grid-cols-4">
+                <div class="grid grid-cols-2 gap-10 sm:gap-10 sm:grid-cols-4">
                     <div class="inline-flex items-center justify-center w-full">
                         <div class="bg-white dark:bg-gray-200">
                             <img src="../img/logo_title_soundscoop.png" class="h-12 mr-2" alt="Logo titre de SoundScoop">
