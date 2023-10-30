@@ -17,7 +17,7 @@ if ($stmt === false) {
 
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="my-32">
-            <a href="article1.php" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
+            <a href="article.php?id_article=<?php echo $row['id_article']; ?>" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
                 <img class="object-cover w-80 md:h-auto md:rounded-none md:rounded-l-lg" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
                 <div class="flex flex-col justify-between p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
@@ -40,6 +40,7 @@ if ($stmt === false) {
             </a>
         </div>
     <?php } ?>
+
 
 
     <div>
