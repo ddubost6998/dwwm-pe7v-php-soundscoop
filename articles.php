@@ -20,7 +20,7 @@ if ($result) {
             <?php
             while ($row = $result->fetch()) {
                 ?>
-                <li><?php echo $row['title']; ?></li>
+                <h2><?php echo $row['title']; ?></h2>
                 <p><?php echo $row['content']; ?></p>
                 <?php
             }
@@ -28,8 +28,9 @@ if ($result) {
         </ul>
     </main>
     <?php
+} else {
+    echo "Erreur lors de l'exécution de la requête : " . $db->errorInfo()[2];
 }
-echo "Erreur lors de l'exécution de la requête : " . $db->errorInfo()[2];
 
 $db = null;
 
