@@ -16,7 +16,7 @@ if ($stmt === false) {
     <h1 class="text-center dark:text-white">Bienvenue sur SoundScoop</h1>
 
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-        <div class="my-32">
+        <div class="my-28">
             <a href="article.php?id_article=<?php echo $row['id_article']; ?>" class="mt-16 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
                 <img class="object-cover w-80 md:h-auto md:rounded-none md:rounded-l-lg" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
                 <div class="flex flex-col justify-between p-4 leading-normal">
@@ -31,7 +31,7 @@ if ($stmt === false) {
                         ?>
                     </p>
                 </div>
-                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover-bg-blue-800 focus:ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">
+                <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover-bg-purple-800 focus:ring-4 focus-outline-none focus-ring-purple-300 dark-bg-purple-600 dark-hover-bg-purpl-700 dark-focus-ring-purple-800">
                     En lire plus
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -41,11 +41,9 @@ if ($stmt === false) {
         </div>
     <?php } ?>
 
-
-
     <div>
-        <a href="articles.php" class="w-40 flex flex-end justify-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <input type="button" value="En savoir plus">
+        <a href="articles.php" class="w-45 flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <input type="button" value="Voir plus d'article">
                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
@@ -53,12 +51,12 @@ if ($stmt === false) {
     </div>
 
     <div class="my-32">
-        <h2 class="text-4xl font-bold dark:text-white">À propos de nous</h2>
+        <h2 class="text-end text-4xl dark:text-white">À propos de nous</h2>
         
         <p class="text-end mt-3">Le site propose des actualités musicales à jour, couvrant divers genres et artistes, avec des articles informatifs sur les derniers événements musicaux. Mise en avant d'artistes émergents et établis, avec des biographies, des interviews, et des performances en direct. Les lecteurs peuvent explorer des articles spécifiques sur leurs genres musicaux préférés, du rock à l'électronique en passant par le jazz.</p>
         
-        <a href="about.php" class="w-40 flex flex-end justify-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            <input type="button" value="En savoir plus">
+        <a href="about.php" class="w-48 flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <input type="button" value="En apprendre plus">
             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>

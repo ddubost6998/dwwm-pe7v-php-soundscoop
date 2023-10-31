@@ -16,7 +16,7 @@ if ($stmt->rowCount() > 0) {
     echo '<main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-purple-500">';
     echo '<h1 class="text-center">' . $article['title'] . '</h1>';
     echo '<div class="article-content">';
-    echo '<img src="' . $article['url_img'] . '" alt="' . $article['title'] . '"/>';
+    echo '<img src="' . $article['url_img'] . '" alt="Image de ' . $article['title'] . '"/>';
     echo '<p>' . $article['content'] . '</p>';
     echo '</div>';
     echo '</main>';
