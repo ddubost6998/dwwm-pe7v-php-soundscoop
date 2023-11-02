@@ -8,8 +8,12 @@ try {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-$query = "SELECT * FROM article";
-$result = $db->query($query);
+$debut = ($actuallyPage - 1) * $articlesByPage;
+$query = "SELECT * FROM article LIMIT $debut, $articlesByPage";
+
+$articlesByPage = 5;
+$actuallyPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
 
 if ($result) {
     ?>
@@ -52,5 +56,25 @@ if ($result) {
 }
 
 $db = null;
+
+$totalArticles = 10;
+$totalPages = ceil($totalArticles / $articlesByPage);
+
+echo '<div class="pagination">';
+if ($actuallyPage > 1) {
+    echo '<a href="?page=' . ($actuallyPage - 1) . '">Page précédente</a>';
+}
+for ($i = 1; $i <= $totalPages; $i++) {
+    if ($i == $actuallyPage) {
+        echo '<span class="current-page">' . $i . '</span>';
+    } else {
+        echo '<a href="?page=' . $i . '">' . $i . '</a>';
+    }
+}
+if ($actuallyPage < $totalPages) {
+    echo '<a href="?page=' . ($actuallyPage + 1) . '">Page suivante</a>';
+}
+echo '</div>';
+
 
 require_once 'layout/footer.php';
