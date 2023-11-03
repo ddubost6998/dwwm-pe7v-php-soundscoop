@@ -19,3 +19,6 @@ Donc je créer le process du formulaire de contact avec contact_process.php et e
 
 ## Création de la classe DbConnection
 Pour lier la connection avec la base de données je créer une classe DbConnection pour pouvoir la récupérer sur plusieurs pages
+
+## Ajout des balises meta Twitter et Facebook
+Dans la page article.php j'ai ajouté les balises dynamique de Twitter et Facebook
