@@ -16,3 +16,6 @@ Permet de gérer les gestions d'erreurs
 Je souhaite que l'utilisateur puisse envoyer un message avec son Prénom, Nom et adresse mail
 
 Donc je créer le process du formulaire de contact avec contact_process.php et en cas de succés vers contact_success.php sinon je met un message d'erreur
+
+## Création de la classe DbConnection
+Pour lier la connection avec la base de données je créer une classe DbConnection pour pouvoir la récupérer sur plusieurs pages

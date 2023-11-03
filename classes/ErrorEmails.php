@@ -2,8 +2,8 @@
 
 class EmailInsertionError
 {
-    public const INVALID_EMAIL = 1;
-    public const SPAM_ATTEMPT  = 2;
+    public const INVALID_EMAIL = 0;
+    public const SPAM_ATTEMPT  = 1;
     
     private static $errorMessages = [
         self::INVALID_EMAIL => "L'e-mail que vous avez fourni n'est pas valide.",

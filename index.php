@@ -1,10 +1,10 @@
 <?php
 require_once 'layout/header.php';
-require_once 'functions/db.php';
+require_once 'classes/DbConnection.php';
 
-$pdo = getConnection();
+$db = new DbConnection;
 
-$stmt = $pdo->query("SELECT * FROM article ORDER BY issue_date DESC LIMIT 3");
+$stmt = $db->query("SELECT * FROM article ORDER BY issue_date DESC LIMIT 3");
 
 if ($stmt === false) {
     echo "Erreur lors de la requête";

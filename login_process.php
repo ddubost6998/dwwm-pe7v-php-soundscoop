@@ -1,7 +1,7 @@
 <?php
 require_once 'classes/ErrorEmails.php';
 require_once 'classes/Utils.php';
-require_once 'functions/db.php';
+require_once 'classes/DbConnection.php';
 
 
 if (!isset($_POST['email']) || !isset($_POST['password'])) {

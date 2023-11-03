@@ -1,10 +1,10 @@
 <?php
 require_once 'layout/header.php';
-require_once 'functions/db.php';
+require_once 'classes/DbConnection.php';
 
 $idArticle = $_GET['id_article'];
 
-$pdo = getConnection();
+$pdo = new DbConnection;
 
 $stmt = $pdo->prepare("SELECT * FROM article WHERE id_article = :idArticle");
 $stmt->bindParam(':idArticle', $idArticle, PDO::PARAM_INT);
