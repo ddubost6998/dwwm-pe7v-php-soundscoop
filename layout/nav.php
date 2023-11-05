@@ -18,7 +18,7 @@ $menuItems = [
         </a>
 
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul class="flex flex-col p-4 mt-4 font-semibold md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 dark:border-gray-700">
+            <ul class="flex flex-col p-4 mt-4 font-semibold md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-gray-100">
                 <?php foreach ($menuItems as $item) { ?>
                 <li>
                     <a href="<?php echo $item->getUrl(); ?>" class="block py-2 pl-3 pr-4 rounded md:p-0 <?php echo $item->getCssClasses(); ?>">

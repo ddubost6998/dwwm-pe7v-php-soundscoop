@@ -3,13 +3,14 @@ require_once 'classes/ErrorEmails.php';
 require_once 'classes/Utils.php';
 require_once 'classes/DbConnection.php';
 
+session_start();
 
 if (!isset($_POST['email']) || !isset($_POST['password'])) {
     Utils::redirect('login.php');
 }
 
 [
-    'email' => $email,
+    'email'    => $email,
     'password' => $password
 ] = $_POST;
 
@@ -30,13 +31,12 @@ if ($user === false) {
     Utils::redirect('login.php?error=' . AppError::USER_NOT_FOUND);
 }
 
-if (!password_verify($password, $user['password'])) {
+if (password_verify($password, $user['password'])) {
+    $_SESSION['userInfos'] = [
+        'id' => $user['id'],
+        'email' => $email
+    ];
+    Utils::redirect('admin.php');
+} else {
     Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);
 }
-
-$_SESSION['userInfos'] = [
-    'id' => $user['id'],
-    'email' => $email
-];
-
-Utils::redirect('admin.php');

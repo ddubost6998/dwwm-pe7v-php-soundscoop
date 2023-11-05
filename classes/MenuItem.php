@@ -2,8 +2,8 @@
 
 class MenuItem
 {
-    private const CSS_ACTIVE   = "text-white bg-purple-700 md:bg-transparent md:text-purple-700";
-    private const CSS_INACTIVE = "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700";
+    private const CSS_ACTIVE   = "text-white bg-purple-700 md:bg-transparent md:text-purple-700 dark:text-white";
+    private const CSS_INACTIVE = "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 dark:text-gray-300";
 
     public static int $count = 0;
 
