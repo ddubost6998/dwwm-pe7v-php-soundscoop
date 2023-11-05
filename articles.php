@@ -2,11 +2,18 @@
 require_once 'layout/header.php';
 require_once 'classes/DbConnection.php';
 
+$articlesByPage = 5; // Nombre d'articles par page
+
 try {
     $pdo = new DbConnection();
 } catch (PDOException $e) {
     echo("Erreur de connexion à la base de données : " . $e->getMessage());
 }
+
+$totalArticles = $pdo->query("SELECT COUNT(*) FROM article")->fetchColumn(); // Détermine le nb total d'articles
+$totalPages = ceil($totalArticles / $articlesPerPage); // Calcul le nombre total de page
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1; // Récupére la page actuelle
+$offset = ($page - 1) * $articlesPerPage; // Calcul le décalage pour la requête SQL
 
 $stmt = $pdo->prepare("SELECT * FROM article");
 $stmt->execute();
@@ -41,6 +48,13 @@ if ($articles) { ?>
                 </a>
             </div>
         <?php } ?>
+
+        <div class="pagination">
+            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                <a href="?page=<?php echo $i; ?>" class="<?php echo ($i === $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+            <?php } ?>
+        </div>
+        
     </main>
     <?php } else {
         echo "Erreur lors de l'exécution de la requête : " . $pdo->errorInfo()[2];
