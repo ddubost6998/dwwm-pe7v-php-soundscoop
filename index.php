@@ -4,7 +4,11 @@ require_once 'classes/DbConnection.php';
 
 $db = new DbConnection;
 
-$stmt = $db->query("SELECT * FROM article ORDER BY issue_date DESC LIMIT 3");
+$stmt = $db->query("SELECT article.*, categorie.name_categorie
+                    FROM article
+                    INNER JOIN article_categorie ON article.id_article = article_categorie.article_id
+                    INNER JOIN categorie ON article_categorie.categorie_id = categorie.id_categorie
+                    ORDER BY article.issue_date DESC LIMIT 3");
 
 if ($stmt === false) {
     echo "Erreur lors de la requête";
@@ -29,7 +33,8 @@ if ($stmt === false) {
                         echo $content;
                         ?>
                     </p>
-                    <p>Publier le : <?php echo $row['issue_date']?></p>
+                    <p>Publier le : <?php echo $row['issue_date'];?></p>
+                    <p class="bg-purple-100 p-2 w-36"><?php echo $row['name_categorie'];?></p>
                 </div>
                 <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover-bg-purple-800 focus:ring-4 focus-outline-none focus-ring-purple-300 dark-bg-purple-600 dark-hover-bg-purpl-700 dark-focus-ring-purple-800">
                 <a href="article.php?id_article=<?php echo $row['id_article']; ?>">
@@ -72,7 +77,7 @@ if ($stmt === false) {
                 <img class="h-100 max-w-80 rounded-lg" src="https://plus.unsplash.com/premium_photo-1663050933954-f46c2cdd2a08?auto=format&fit=crop&q=60&w=900&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amF6enxlbnwwfHwwfHx8MA%3D%3D" alt="Photo de batterie">
             </div>
             <div>
-                <img class="h-100 max-w-80 rounded-lg" src="https://images.unsplash.com/photo-1499415479124-43c32433a620?auto=format&fit=crop&q=60&w=900&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG11c2ljfGVufDB8fDB8fHww" alt="Photo d'un néon No music no life">
+                <img class="h-100 max-w-80 rounded-lg" src="https://images.pexels.com/photos/2426085/pexels-photo-2426085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Photo d'un studio avec casque">
             </div>
             <div>
                 <img class="h-100 max-w-80 rounded-lg" src="https://images.unsplash.com/photo-1546872006-43d8f499a0e1?auto=format&fit=crop&q=60&w=900&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGphenp8ZW58MHx8MHx8fDA%3D" alt="Photo d'un lecteur de vinyl">
