@@ -1,12 +1,13 @@
 <?php
-require_once 'classes/ErrorEmails.php';
 require_once 'classes/Utils.php';
+require_once 'classes/AppError.php';
+require_once 'classes/ErrorEmails.php';
 require_once 'classes/DbConnection.php';
 
 session_start();
 
 if (!isset($_POST['email']) || !isset($_POST['password'])) {
-    Utils::redirect('login.php');
+    Utils::redirect('login.php?error=' . AppError::AUTH_REQUIRED_FIELDS);
 }
 
 [
@@ -15,12 +16,12 @@ if (!isset($_POST['email']) || !isset($_POST['password'])) {
 ] = $_POST;
 
 try {
-    $pdo = getConnection();
+    $pdo = new DbConnection;
 } catch (PDOException) {
     Utils::redirect('login.php?error=' . AppError::DB_CONNECTION);
 }
 
-$query = "SELECT * FROM users WHERE email = ?";
+$query = "SELECT * FROM user WHERE email = ?";
 
 $connectStmt = $pdo->prepare($query);
 $connectStmt->execute([$email]);
@@ -31,12 +32,12 @@ if ($user === false) {
     Utils::redirect('login.php?error=' . AppError::USER_NOT_FOUND);
 }
 
-if (password_verify($password, $user['password'])) {
-    $_SESSION['userInfos'] = [
-        'id' => $user['id'],
-        'email' => $email
+if ($user !== false && $user['password'] === $password) {
+    $_SESSION['id_user'] = [
+        'id_user' => $user['id_user'],
+        'email'   => $email
     ];
     Utils::redirect('admin.php');
-} else {
-    Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);
 }
+
+Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);

@@ -15,8 +15,8 @@ class MenuItem
         string $url,
         string $label
     ) {
-        $this->url = $url;
-        $this->label = $label;
+        $this->url    = $url;
+        $this->label  = $label;
         $this->active = str_contains($_SERVER['REQUEST_URI'], $url);
         self::$count++;
     }
