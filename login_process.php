@@ -38,6 +38,6 @@ if ($user !== false && $user['password'] === $password) {
         'email'   => $email
     ];
     Utils::redirect('admin.php');
+} else {
+    Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);
 }
-
-Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);

@@ -45,6 +45,7 @@ $content = $article['content'];
         
         <div class="article-content">
             <img src="<?php echo $article['url_img']; ?>" alt="Image de <?php echo $article['title']; ?>"/>
+            <p>Publier le : <?php echo $article['issue_date']?></p>
             <p><?php echo $article['content']; ?></p>
         </div>
     </main>
