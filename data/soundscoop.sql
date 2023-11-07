@@ -121,7 +121,7 @@ INSERT INTO `artist` (`id_artist`, `name_artist`, `url_img`, `country`, `date_cr
 (17, 'Eminem', NULL, 'USA', '2018-10-02', 7),
 (18, 'Kungs', NULL, 'France', '2017-04-14', 4),
 (19, 'Chopin', NULL, 'Pologne', '2016-01-13', 8),
-(20, 'Guns N\' Roses', NULL, 'USA', '2015-10-06', 2);
+(20, 'Guns N\', 'Roses', NULL, 'USA', '2015-10-06', 2);
 
 -- --------------------------------------------------------
 
