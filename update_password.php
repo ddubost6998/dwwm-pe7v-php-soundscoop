@@ -1,4 +1,5 @@
 <?php
+require_once 'classes/DbConnection.php';
 
 $db = new DbConnection;
 
