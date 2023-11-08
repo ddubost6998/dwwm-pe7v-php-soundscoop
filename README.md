@@ -47,3 +47,21 @@ J'ai créer la classe MenuItem avec 2 constantes pour active ou inactive.
 Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
 
 Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
+
+## Ajout de la déconnexion pour l'admin
+Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logout=1">Déconnexion</a>``` 
+
+## Ajout d'un article
+Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir ```title, content, issue_date, user_id, url_img``` 
+Pour le process de l'ajout de l'article j'ai ajouter une page add_article pour l'insertion de l'article dans la base de donnée avec
+```php
+try {
+        $pdo = new DbConnection;
+        $stmt = $pdo->prepare("INSERT INTO article (title, content, issue_date, user_id, url_img) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$title, $content, $issue_date, $user_id, $url_img]);
+        Utils::redirect('admin.php');
+    } catch (PDOException $e) {
+        echo "Une erreur s'est produite : " . $e->getMessage();
+    }
+```
+D'abord je me connecte à la base de données puis je prépare la requête SQL pour l'executer avec execute([]) puis je redirige sur admin.php sinon un message d'erreur s'affiche
