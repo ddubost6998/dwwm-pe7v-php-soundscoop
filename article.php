@@ -43,7 +43,7 @@ $content = $article['content'];
     <main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-purple-500">
         <h1 class="text-center"><?php echo $article['title']; ?></h1>
         
-        <div class="article-content">
+        <div class="article-content items-center">
             <img src="<?php echo $article['url_img']; ?>" alt="Image de <?php echo $article['title']; ?>"/>
             <p>Publier le : <?php echo $article['issue_date']?></p>
             <p><?php echo $article['content']; ?></p>
