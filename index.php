@@ -20,10 +20,11 @@ if ($stmt === false) {
     <h1 class="text-center dark:text-white">Bienvenue sur SoundScoop</h1>
 
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-        <div class="mt-16 mb-8 flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
-            <img class="object-cover w-80 md:h-auto" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
+        <div class="mt-16 mb-8 max-w-sm flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
+            <img class="object-center w-full md:h-auto" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
             <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
+                <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
+                <p>Publier le : <?php echo $row['issue_date'];?></p>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     <?php
                     $content = $row['content'];
@@ -33,7 +34,6 @@ if ($stmt === false) {
                     echo $content;
                     ?>
                 </p>
-                <p>Publier le : <?php echo $row['issue_date'];?></p>
                 <p class="bg-purple-100 p-2 w-36"><?php echo $row['name_categorie'];?></p>
             </div>
         </div>
@@ -46,8 +46,34 @@ if ($stmt === false) {
         </div>
     <?php } ?>
 
+<!--    <?php foreach ($articles as $article) { ?>
+        <div class="max-w-xl bg-purple-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img class="rounded-t-lg" src="<?php echo $article['url_img']; ?>" alt="<?php echo $article['title']; ?>"/>
+            </a>
+            <div class="p-5">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $article['title']; ?></h5>
+                </a>
+                <p>Publier le : <?php echo $row['issue_date'];?></p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php $content = $article['content'];
+                    if (strlen($content) > 45) {
+                        $content = substr($content, 0, 45) . '...';
+                    }
+                    echo $content;
+                    ?>
+                </p>
+                <a href="articles.php" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"> En lire plus
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    <?php } ?> -->
+
     <div>
-        <a href="articles.php" class="w-40 mt-20 flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
+        <a href="articles.php" class="w-auto float-right flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
             <input type="button" value="Voir plus d'article">
                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -60,7 +86,7 @@ if ($stmt === false) {
         
         <p class="text-end mt-3">Le site propose des actualités musicales à jour, couvrant divers genres et artistes, avec des articles informatifs sur les derniers événements musicaux. Mise en avant d'artistes émergents et établis, avec des biographies, des interviews, et des performances en direct. Les lecteurs peuvent explorer des articles spécifiques sur leurs genres musicaux préférés, du rock à l'électronique en passant par le jazz.</p>
         
-        <a href="about.php" class="w-48 ml-96 flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="about.php" class="w-auto ml-96 float-right flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <input type="button" value="En apprendre plus">
             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -71,7 +97,7 @@ if ($stmt === false) {
     <div class="my-32">
         <h2 class="text-4xl font-bold dark:text-white">Nos photos</h2>
 
-        <div class="my-10 grid grid-cols-2 gap-3">
+        <div class="my-3 grid grid-cols-2 gap-2">
             <div>
                 <img class="h-100 max-w-80 rounded-lg" src="https://plus.unsplash.com/premium_photo-1663050933954-f46c2cdd2a08?auto=format&fit=crop&q=60&w=900&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8amF6enxlbnwwfHwwfHx8MA%3D%3D" alt="Photo de batterie">
             </div>

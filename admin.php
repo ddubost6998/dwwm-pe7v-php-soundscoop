@@ -30,6 +30,20 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="?logout=1">Déconnexion</a>
 
     <div class="my-10 px-9 py-1 bg-purple-200 rounded-lg">
+        <h2 class="text-center">Liste des articles</h2>
+        <table>
+            <?php foreach ($articles as $article) { ?>
+            <tr>
+                <td> <?php echo $article['issue_date'] ?></td>
+                <td> <?php echo $article['title'] ?></td>
+                <td><a href="edit_article.php?id=<?php echo $article['id_article']?>">Modifier</a></td>
+                <td><a href="delete_article.php?id=<?php echo $article['id_article']?>">Supprimer</a></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
+
+    <div class="my-10 px-9 py-1 bg-purple-200 rounded-lg">
         <h2 class="text-center">Ajouter un nouvel article</h2>
         <form action="add_article.php" method="post">
             <label for="title">Titre de l'article</label>
@@ -49,19 +63,6 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <button type="submit" class="mt-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Ajouter l'article</button>
         </form>
-    </div>
-
-    <div class="my-10 px-9 py-1 bg-purple-200 rounded-lg">
-        <h2 class="text-center">Liste des articles</h2>
-        <table>
-            <?php foreach ($articles as $article) { ?>
-            <tr>
-                <td> <?php echo $article['title'] ?></td>
-                <td><a href="edit_article.php?id=<?php echo $article['id_article']?>">Modifier</a></td>
-                <td><a href="delete_article.php?id=<?php echo $article['id_article']?>">Supprimer</a></td>
-            </tr>
-            <?php } ?>
-        </table>
     </div>
 </main>
 

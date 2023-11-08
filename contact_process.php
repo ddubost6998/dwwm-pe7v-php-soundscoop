@@ -7,11 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $message = $_POST["message"];
 
-    $to = "ddubost@stagiaire-humanbooster.com";
+    $to = "ddubost6998@gmail.com";
 
     $subject = "Nouveau message de contact depuis SoundScoop";
 
-    $message_body = "Nom : $first_name $last_name\n";
+    $message_body  = "Nom : $first_name $last_name\n";
     $message_body .= "Email : $email\n";
     $message_body .= "Message :\n$message";
 
