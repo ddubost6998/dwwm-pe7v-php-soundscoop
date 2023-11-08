@@ -46,4 +46,4 @@ J'ai créer la classe MenuItem avec 2 constantes pour active ou inactive.
 ## Ajout d'un script PHP update_password
 Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
 
-Pour hacher les mot de passe il suffit d'aller dans l'URL avec update_password.php.
+Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.

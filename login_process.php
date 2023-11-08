@@ -32,7 +32,7 @@ if ($user === false) {
     Utils::redirect('login.php?error=' . AppError::USER_NOT_FOUND);
 }
 
-if ($user !== false && $user['password'] === $password) {
+if ($user !== false && password_verify($password, $user['password'])) {
     $_SESSION['id_user'] = [
         'id_user' => $user['id_user'],
         'email'   => $email
