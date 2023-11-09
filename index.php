@@ -20,25 +20,21 @@ if ($stmt === false) {
     <h1 class="text-center dark:text-white">Bienvenue sur SoundScoop</h1>
 
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
-        <div class="mt-16 mb-8 max-w-sm flex flex-col items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
-            <img class="object-center w-full md:h-auto" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
-            <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
-                <p>Publier le : <?php echo $row['issue_date'];?></p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    <?php
-                    $content = $row['content'];
-                    if (strlen($content) > 45) {
-                        $content = substr($content, 0, 45) . '...';
-                    }
-                    echo $content;
-                    ?>
-                </p>
-                <p class="bg-purple-100 p-2 w-36"><?php echo $row['name_categorie'];?></p>
-            </div>
-        </div>
-        <div class="w-36 ml-96 mt-5 flex items-center text-center text-sm text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
-            <a href="article.php?id_article=<?php echo $row['id_article']; ?>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover-bg-blue-800 focus:ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">En lire plus
+        <div class="mt-16 mb-8 p-5 max-w-lg items-center bg-purple-400 rounded-lg shadow-lg md:flex-row md:max-w-sm hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
+            <img class="rounded-lg" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
+            <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
+            <p>Publier le : <?php echo $row['issue_date'];?></p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <?php
+                $content = $row['content'];
+                if (strlen($content) > 45) {
+                    $content = substr($content, 0, 45) . '...';
+                }
+                echo $content;
+                ?>
+            </p>
+            <p class="bg-purple-100 p-2 w-36"><?php echo $row['name_categorie'];?></p>
+            <a href="article.php?id_article=<?php echo $row['id_article']; ?>" class="w-auto mt-10 float-right flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">En lire plus
                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
@@ -46,7 +42,7 @@ if ($stmt === false) {
         </div>
     <?php } ?>
 
-<!--    <?php foreach ($articles as $article) { ?>
+<!--    <?php /*foreach ($articles as $article) { ?>
         <div class="max-w-xl bg-purple-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img class="rounded-t-lg" src="<?php echo $article['url_img']; ?>" alt="<?php echo $article['title']; ?>"/>
@@ -70,10 +66,10 @@ if ($stmt === false) {
                 </a>
             </div>
         </div>
-    <?php } ?> -->
+    <?php } */?> -->
 
     <div>
-        <a href="articles.php" class="w-auto float-right flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
+        <a href="articles.php" class="w-auto mt-10 float-right flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
             <input type="button" value="Voir plus d'article">
                 <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
