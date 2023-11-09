@@ -2,25 +2,28 @@
 require_once 'layout/header.php';
 require_once 'classes/DbConnection.php';
 
-$articlesByPage = 5;
-
 try {
     $pdo = new DbConnection();
 } catch (PDOException $e) {
     echo("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
+$articlesByPage = 5;
 $totalArticles = $pdo->query("SELECT COUNT(*) FROM article")->fetchColumn();
 $totalPages = ceil($totalArticles / $articlesByPage);
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $articlesByPage;
 
-$stmt = $pdo->query("SELECT article.*, categorie.name_categorie
+$stmt = $pdo->prepare("SELECT article.*, categorie.name_categorie
                     FROM article
                     INNER JOIN article_categorie ON article.id_article = article_categorie.article_id
                     INNER JOIN categorie ON article_categorie.categorie_id = categorie.id_categorie
-                    ORDER BY article.issue_date DESC");
+                    ORDER BY article.issue_date DESC
+                    LIMIT :offset, :articlesByPage");
+$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmt->bindParam(':articlesByPage', $articlesByPage, PDO::PARAM_INT);
 $stmt->execute();
+
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($articles) { ?>
