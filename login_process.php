@@ -29,7 +29,7 @@ $connectStmt->execute([$email]);
 $user = $connectStmt->fetch();
 
 if ($user === false) {
-    Utils::redirect('login.php?error=' . AppError::USER_NOT_FOUND);
+    Utils::redirect('login.php?error=' . urlencode(AppError::USER_NOT_FOUND));
 }
 
 if ($user !== false && password_verify($password, $user['password'])) {
@@ -39,5 +39,5 @@ if ($user !== false && password_verify($password, $user['password'])) {
     ];
     Utils::redirect('admin.php');
 } else {
-    Utils::redirect('login.php?error=' . AppError::INVALID_CREDENTIALS);
+    Utils::redirect('login.php?error=' . urlencode(AppError::INVALID_CREDENTIALS));
 }
