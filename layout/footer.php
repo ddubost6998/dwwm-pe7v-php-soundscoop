@@ -56,7 +56,7 @@
                 <div class="sm:flex sm:items-center sm:justify-center">
                     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="index.php" class="hover:underline">SoundScoop™</a> Tous droits réservé.
                 <div class="">
-                    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Site développer par Damien DUBOST.
+                    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">Site développé par Damien DUBOST.
                 </div>
             </div>
             </div>
