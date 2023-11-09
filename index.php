@@ -14,12 +14,15 @@ if ($stmt === false) {
     echo "Erreur lors de la requête";
     exit;
 }
+
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-purple-500">
     <h1 class="text-center dark:text-white">Bienvenue sur SoundScoop</h1>
 
-    <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+    <?php foreach ($rows as $row) { ?>
         <div class="mt-16 mb-8 p-5 max-w-lg items-center bg-purple-400 rounded-lg shadow-lg md:flex-row md:max-w-sm hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
             <img class="rounded-lg" src="<?php echo $row['url_img']; ?>" alt="<?php echo $row['title']; ?>"/>
             <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $row['title']; ?></h5>
@@ -41,32 +44,6 @@ if ($stmt === false) {
             </a>
         </div>
     <?php } ?>
-
-<!--    <?php /*foreach ($articles as $article) { ?>
-        <div class="max-w-xl bg-purple-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg" src="<?php echo $article['url_img']; ?>" alt="<?php echo $article['title']; ?>"/>
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $article['title']; ?></h5>
-                </a>
-                <p>Publier le : <?php echo $row['issue_date'];?></p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php $content = $article['content'];
-                    if (strlen($content) > 45) {
-                        $content = substr($content, 0, 45) . '...';
-                    }
-                    echo $content;
-                    ?>
-                </p>
-                <a href="articles.php" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"> En lire plus
-                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    <?php } */?> -->
 
     <div>
         <a href="articles.php" class="w-auto mt-10 float-right flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">
