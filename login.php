@@ -1,5 +1,6 @@
 <?php
 require_once 'layout/header.php';
+require_once 'classes/AppError.php';
 ?>
 
 <main class="prose mx-auto mt-24">
@@ -11,8 +12,9 @@ require_once 'layout/header.php';
                 
                 <?php
                 if (isset($_GET['error'])) {
-                    $error_message = $_GET['error'];
-                    echo '<p class="text-red-500 text-center mb-4">' . $error_message . '</p>';
+                    $errorCode = $_GET['error'];
+                    $errorMessage = AppError::getErrorMessage($errorCode);
+                    echo '<p class="text-red-500 text-center mb-4">' . $errorMessage . '</p>';
                 }
                 ?>
 
