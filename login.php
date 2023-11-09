@@ -9,6 +9,13 @@ require_once 'layout/header.php';
                 
                 <h1 class="font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">Connectez-vous</h1>
                 
+                <?php
+                if (isset($_GET['error'])) {
+                    $error_message = $_GET['error'];
+                    echo '<p class="text-red-500 text-center mb-4">' . $error_message . '</p>';
+                }
+                ?>
+
                 <form action="login_process.php" method="POST" class="space-y-4 md:space-y-6">
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Votre email</label>
