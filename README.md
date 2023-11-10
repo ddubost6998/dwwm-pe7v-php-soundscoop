@@ -100,3 +100,19 @@ foreach ($rows as $row) {
         </div>
     <?php } ?>
 ```
+
+## Navbar dynamique
+
+J'ai rendu la navbar dynamique pour que la page sur laquelle on consulte soit en violet et grisé pour les autres.
+J'ai fait le menu avec un foreach :
+```php
+<?php foreach ($menuItems as $item) { ?>
+    <li>
+        <a href="<?php echo $item->getUrl(); ?>" class="block py-2 pl-3 pr-4 rounded md:p-0 <?php echo $item->getCssClasses(); ?>">
+        <?php echo $item->getLabel(); ?>
+        </a>
+    </li>
+<?php } ?>
+```
+
+J'ai créer une classe MenuItem qui permet de choisir soit le CSS actif ou inactif.
