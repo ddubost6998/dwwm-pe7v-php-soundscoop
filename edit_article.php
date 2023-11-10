@@ -2,8 +2,17 @@
 require_once 'layout/header.php';
 require_once 'classes/Utils.php';
 require_once 'classes/DbConnection.php';
+require_once 'classes/EditArticleError.php';
 
 session_start();
+
+if (!isset($_SESSION['id_user'])) {
+    Utils::redirect('login.php');
+}
+
+if (!isset($_GET['id'])) {
+    Utils::redirect('admin.php');
+}
 
 $id_article = $_GET['id'];
 
@@ -19,6 +28,11 @@ try {
     echo "Une erreur s'est produite : " . $e->getMessage();
     exit;
 }
+
+if (!$article) {
+    Utils::redirect('edit_article.php?error=' . EditArticleError::ARTICLE_NOT_FOUND);
+}
+
 ?>
 <main class="prose mx-auto my-24">
     <div class="px-9 py-1 bg-purple-200 rounded-lg">

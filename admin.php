@@ -5,7 +5,6 @@ require_once 'classes/DbConnection.php';
 
 session_start();
 
-// Authentifier ?
 if (!isset($_SESSION['id_user'])) {
     Utils::redirect('login.php');
 }
@@ -18,6 +17,20 @@ try {
     $pdo = new DbConnection;
 } catch (PDOException) {
     Utils::redirect('admin.php?error=' . AppError::DB_CONNECTION);
+}
+
+if (isset($_GET['success'])) {
+    $successMessage = '';
+
+    switch ($_GET['success']) {
+        case 'article_deleted':
+            $successMessage = 'Article supprimé avec succès.';
+            break;
+    }
+
+    if (!empty($successMessage)) {
+        echo '<p class="text-green-500">' . $successMessage . '</p>';
+    }
 }
 
 $stmt = $pdo->query("SELECT * FROM article");
