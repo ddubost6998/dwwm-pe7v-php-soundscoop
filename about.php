@@ -5,7 +5,7 @@ require_once 'layout/header.php';
 <main class="prose mx-auto my-32 dark:text-white dark:border-gray-600 dark:focus:border-purple-500">
     <h1 class="text-center dark:text-white">À propos de SoundScoop</h1>
 
-    <p class ="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta suscipit praesentium reprehenderit aperiam beatae repellat distinctio, cupiditate labore sint quia culpa enim voluptatum dignissimos delectus, qui nisi architecto perferendis blanditiis.<br>
+    <p class ="text-justify">Le site propose des actualités musicales à jour, couvrant divers genres et artistes, avec des articles informatifs sur les derniers événements musicaux. Mise en avant d'artistes émergents et établis, avec des biographies, des interviews, et des performances en direct. Les lecteurs peuvent explorer des articles spécifiques sur leurs genres musicaux préférés, du rock à l'électronique en passant par le jazz.<br>
 
     <img class="rounded-md shadow-md" src="img/team.jpg" alt="Photo de l'équipe dans le studio" width="570">
     
