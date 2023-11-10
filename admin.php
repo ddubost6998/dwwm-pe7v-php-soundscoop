@@ -38,19 +38,21 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main class="prose mx-auto mt-24">
-    <h1>Admin</h1>
-
-    <a href="?logout=1">Déconnexion</a>
+    <div class="grid grid-cols-3 justify-items-stretch text-center">
+        <h1>Admin</h1>
+        <hr class="w-auto h-3 mt-3 rounded-full bg-purple-200 dark:bg-purple-700">
+        <a href="?logout=1">Déconnexion</a>
+    </div>
 
     <div class="my-10 px-9 py-1 bg-purple-200 rounded-lg">
         <h2 class="text-center">Liste des articles</h2>
         <table>
             <?php foreach ($articles as $article) { ?>
             <tr>
-                <td> <?php echo $article['issue_date'] ?></td>
-                <td> <?php echo $article['title'] ?></td>
-                <td><a href="edit_article.php?id=<?php echo $article['id_article']?>">Modifier</a></td>
-                <td><a href="delete_article.php?id=<?php echo $article['id_article']?>">Supprimer</a></td>
+                <td> <?php echo date('d/m/Y', strtotime($article['issue_date'])); ?></td>
+                <td> <?php echo $article['title']; ?></td>
+                <td> <a href="edit_article.php?id=<?php echo $article['id_article']; ?>">Modifier</a></td>
+                <td> <a href="delete_article.php?id=<?php echo $article['id_article']; ?>">Supprimer</a></td>
             </tr>
             <?php } ?>
         </table>

@@ -35,7 +35,7 @@ if ($articles) { ?>
             <div class="mt-16 mb-8 p-5 items-center bg-purple-300 rounded-lg shadow-lg hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
                 <img class="rounded-lg mt-0 w-auto" src="<?php echo $article['url_img']; ?>" alt="Image de <?php echo $article['title']; ?>"/>
                 <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $article['title']; ?></h5>
-                <p>Publier le : <?php echo $article['issue_date']?></p>
+                <p>Publier le : <?php echo date('d/m/Y', strtotime($article['issue_date']))?></p>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     <?php
                     $content = $article['content'];
