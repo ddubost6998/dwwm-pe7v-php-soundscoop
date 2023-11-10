@@ -77,4 +77,3 @@ $db = new DbConnection;
 ```php
 
 ```
-
