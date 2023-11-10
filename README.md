@@ -1,6 +1,6 @@
-# SoundScoop
+# SoundScoop | Actu musicale
 
-## Informations
+## ![alt text](https://cdn-icons-png.flaticon.com/512/497/497738.png "Logo Title Attention") Informations
 - Nom de la base de données : soundscoop
 - Nom utilisateur : hb_lucas
 - Mot de passe : C_Pkcx48x95zoCok
