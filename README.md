@@ -193,15 +193,18 @@ if ($user !== false && password_verify($password, $user['password'])) {
 ```
 
 ## Ajout d'un script PHP update_password
+
 Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
 
 Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
 
 ## Ajout d'un article
-- Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir 
+
+- Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir dans un formulaire
 ```php
-$stmt = $pdo->prepare("INSERT INTO article (title, content, issue_date, user_id, url_img) VALUES (?, ?, ?, ?, ?)");
+<form action="add_article.php" method="post">
 ``` 
+Ce qui me renvoi dans add_article.php, elle me permet d'insérer toutes les infos dans la base de données
 
 - Pour le process de l'ajout de l'article j'ai ajouter une page add_article pour l'insertion de l'article dans la base de donnée avec
 ```php
@@ -227,7 +230,7 @@ Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logo
 
 ---
 
-## À amélioré et ajouté
+## À amélioré et à ajouté
 
 - Je pourrais par la suite refactoriser toutes mes fonctions dans des classes pour réduire la longueur du code dans les pages d'affichage.
 
