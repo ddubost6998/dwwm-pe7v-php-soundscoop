@@ -26,8 +26,8 @@ $stmt = $pdo->prepare("SELECT article.*, categorie.name_categorie
     <h1 class="text-center dark:text-white">Catégories</h1>
 
     <?php foreach ($categories as $category) { ?>
-        <div class="my-20">
-            <h2 class="text-2xl underline underline-offset-8 font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $category['name_categorie']; ?></h2>
+        <div class="m-8 p-8 items-center bg-purple-50 hover:bg-purple-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
+            <h2 class="font-bold underline underline-offset-8 text-gray-900 dark:text-white"><?php echo $category['name_categorie']; ?></h2>
 
             <?php
             $stmt = $pdo->prepare("SELECT article.*, categorie.name_categorie
@@ -38,28 +38,24 @@ $stmt = $pdo->prepare("SELECT article.*, categorie.name_categorie
                         ORDER BY article.issue_date DESC");
             $stmt->bindParam(':cat_id', $category['id_categorie'], PDO::PARAM_INT);
             $stmt->execute();
-            $articles = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+            $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            <?php foreach ($articles as $article) { ?>
-                <div class="my-20">
-                    <a href="article.php?id_article=<?php echo $article['id_article']; ?>">
-                        <img class="object-cover w-80 md:h-auto md:rounded-none md:rounded-l-lg" src="<?php echo $article['url_img']; ?>" alt="Image de <?php echo $article['title']; ?>"/>
-                    </a>
-                    <div class="my-12 mx-3 p-4 flex flex-col justify-between leading-normal items-center bg-purple-300 border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover-bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
-                        <h5 class="mb-2 mx-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $article['title']; ?></h5>
-                        <p class="mb-3 mx-3 font-normal text-gray-700 dark:text-gray-400">
-                            <?php
-                            $content = $article['content'];
-                            if (strlen($content) > 45) {
-                                $content = substr($content, 0, 45) . '...';
-                            }
-                            echo $content;
-                            ?>
-                        </p>
-                        <p>Publier le : <?php echo $article['issue_date']?></p>
-                        <p class="bg-purple-100 p-2 w-36 mx-3"><?php echo $article['name_categorie'];?></p>
-                    </div>
-                    <a href="article.php?id_article=<?php echo $article['id_article']; ?>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover-bg-blue-800 focus:ring-4 focus-outline-none focus-ring-blue-300 dark-bg-blue-600 dark-hover-bg-blue-700 dark-focus-ring-blue-800">En lire plus
+            foreach ($articles as $article) { ?>
+                <div class="mt-16 mb-8 p-5 items-center bg-purple-300 rounded-lg shadow-lg hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
+                    <img class="rounded-lg mt-0 w-auto" src="<?php echo $article['url_img']; ?>" alt="Image de <?php echo $article['title']; ?>"/>
+                    <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?php echo $article['title']; ?></h5>
+                    <p>Publier le : <?php echo $article['issue_date']?></p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <?php
+                        $content = $article['content'];
+                        if (strlen($content) > 45) {
+                            $content = substr($content, 0, 45) . '...';
+                        }
+                        echo $content;
+                        ?>
+                    </p>
+                    <p class="bg-purple-100 p-2 w-32"><?php echo $article['name_categorie'];?></p>
+                    <a href="article.php?id_article=<?php echo $article['id_article']; ?>" class="w-auto flex items-center px-3 py-2 text-center text-sm font-medium text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-400 dark:hover:bg-purple-600 dark:focus:ring-purple-800">En lire plus
                         <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                         </svg>
