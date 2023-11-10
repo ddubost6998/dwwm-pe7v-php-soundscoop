@@ -7,7 +7,7 @@
 
 Le fichier .sql se situe dans le dossier data
 
-## Connexion admin
+- Connexion admin
 - Email : lucas@gmail.com
 - Mot de passe : test
 
@@ -28,30 +28,21 @@ Permet de nommer clairement les erreurs lié à la connexion.
 ## Ajout de la classe ErrorEmails
 Permet de gérer les gestions d'erreurs des emails.
 
-## Formulaire de connexion de l'admin
-Dans le ```<form>``` j'ajoute l'atribut action pour l'envoyer à la page de process login_success et la méthode POST pour ne pas divulguer les infos de connexion.
+## Navbar dynamique
 
-Dans login_process.php
-Je vérifie si la requête HTTP est une requête POST et redirige vers login.php si la condition n'est pas satisfaite.
+- J'ai rendu la navbar dynamique pour que la page sur laquelle on consulte soit en violet et grisé pour les autres.
+- J'ai fait le menu avec un foreach :
+```php
+<?php foreach ($menuItems as $item) { ?>
+    <li>
+        <a href="<?php echo $item->getUrl(); ?>" class="block py-2 pl-3 pr-4 rounded md:p-0 <?php echo $item->getCssClasses(); ?>">
+        <?php echo $item->getLabel(); ?>
+        </a>
+    </li>
+<?php } ?>
+```
 
-## Formulaire de contact avec message
-Je souhaite que l'utilisateur puisse envoyer un message avec son Prénom, Nom et adresse mail.
-
-Donc je créer le process du formulaire de contact avec contact_process.php et en cas de succés vers contact_success.php sinon je met un message d'erreur.
-
-## Ajout des balises meta Twitter et Facebook
-Dans la page article.php j'ai ajouté les balises dynamique de Twitter et Facebook.
-
-## Rendre les liens de la navigation actif ou inactif
-J'ai créer la classe MenuItem avec 2 constantes pour active ou inactive.
-
-## Ajout d'un script PHP update_password
-Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
-
-Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
-
-## Ajout de la déconnexion pour l'admin
-Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logout=1">Déconnexion</a>``` 
+- J'ai créer une classe MenuItem qui permet de choisir soit le CSS actif ou inactif.
 
 ## Ajout d'un article
 Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir ```title, content, issue_date, user_id, url_img``` 
@@ -68,6 +59,7 @@ try {
 ```
 D'abord je me connecte à la base de données puis je prépare la requête SQL pour l'executer avec execute([]) puis je redirige sur admin.php sinon un message d'erreur s'affiche
 
+---
 
 ## Page d'accueil dans index.php
 
@@ -75,7 +67,7 @@ D'abord je me connecte à la base de données puis je prépare la requête SQL p
 ```php
 $db = new DbConnection;
 ```
-- Ensuite j'affiche les 3 articles les plus récents avec une requête SQL
+- Ensuite j'affiche les 3 articles les plus récents avec une requête SQL avec les informations dynamique
 ```php
 foreach ($rows as $row) {
         <div class="mt-16 mb-8 p-5 items-center bg-purple-300 rounded-lg shadow-lg hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
@@ -101,18 +93,52 @@ foreach ($rows as $row) {
     <?php } ?>
 ```
 
-## Navbar dynamique
+- Ajout de la partie À propos avec un lien vers la page about.php
 
-J'ai rendu la navbar dynamique pour que la page sur laquelle on consulte soit en violet et grisé pour les autres.
-J'ai fait le menu avec un foreach :
-```php
-<?php foreach ($menuItems as $item) { ?>
-    <li>
-        <a href="<?php echo $item->getUrl(); ?>" class="block py-2 pl-3 pr-4 rounded md:p-0 <?php echo $item->getCssClasses(); ?>">
-        <?php echo $item->getLabel(); ?>
-        </a>
-    </li>
-<?php } ?>
+- Ajout d'une galerie de photos
+
+---
+
+## Formulaire de contact avec message
+- Je souhaite que l'utilisateur puisse envoyer un message avec son Prénom, Nom et adresse mail.
+Dans le formulaire j'utilise la méthode POST qui permet d'envoyer dans le corps de la requête pour ne pas rendre visible les informations dans l'URL
+```html
+<form method="POST" action="contact_process.php">
 ```
 
-J'ai créer une classe MenuItem qui permet de choisir soit le CSS actif ou inactif.
+- J'envoi le formulaire de contact dans la page contact_process.php ce qui permet d'envoyer le message à l'équipe du site qui le reçoi dans sa boîte mail
+Si c'est la méthode POST alors cela redirige vers la page de succés de l'envoi contact_sucess.php
+```php
+$_SERVER["REQUEST_METHOD"] == "POST"
+```
+Sinon je reviens dans la page contact.php
+```php
+Utils::redirect("contact.php");
+```
+
+## Balises meta de Twitter et Facebook
+- Dans la page article.php j'ai ajouté les balises dynamique de Twitter :
+```
+```
+
+et Facebook :
+```
+```
+
+---
+
+## Partie admin
+
+## Formulaire de connexion de l'admin
+Dans le ```<form>``` j'ajoute l'atribut action pour l'envoyer à la page de process login_success et la méthode POST pour ne pas divulguer les infos de connexion.
+
+Dans login_process.php
+Je vérifie si la requête HTTP est une requête POST et redirige vers login.php si la condition n'est pas satisfaite.
+
+## Ajout d'un script PHP update_password
+Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
+
+Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
+
+## Ajout de la déconnexion pour l'admin
+Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logout=1">Déconnexion</a>``` 
