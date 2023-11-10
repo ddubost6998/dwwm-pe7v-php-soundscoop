@@ -1,20 +1,20 @@
 # SoundScoop
 
 ## Informations
-⋅⋅* Nom de la base de données : soundscoop
-⋅⋅* Nom utilisateur : hb_lucas
-⋅⋅* Mot de passe : C_Pkcx48x95zoCok
+- Nom de la base de données : soundscoop
+- Nom utilisateur : hb_lucas
+- Mot de passe : C_Pkcx48x95zoCok
 
 Le fichier .sql se situe dans le dossier data
 
 ## Connexion admin
-⋅⋅* Email : lucas@gmail.com
-⋅⋅* Mot de passe : test
+- Email : lucas@gmail.com
+- Mot de passe : test
 
 ## Ajout du dossier layout
-⋅⋅* Création d'un fichier ```header.php``` permettant l'insertion des balises meta
-⋅⋅* Création d'un fichier ```nav.php``` permettant l'insertion de la navbar dans les pages
-⋅⋅* Création d'un fichier ```footer.php``` permettant l'insertion du footer dans les pages pour pouvoir les ```require_once``` dans chaque page.
+- Création d'un fichier ```header.php``` permettant l'insertion des balises meta
+- Création d'un fichier ```nav.php``` permettant l'insertion de la navbar dans les pages
+- Création d'un fichier ```footer.php``` permettant l'insertion du footer dans les pages pour pouvoir les ```require_once``` dans chaque page.
 
 ## Ajout de la méthode statique Utils dans une classe
 La classe Utils permet de rediriger l'utilisateur vers un emplacement donnée avec la fonction redirect.
@@ -71,11 +71,11 @@ D'abord je me connecte à la base de données puis je prépare la requête SQL p
 
 ## Page d'accueil dans index.php
 
-⋅⋅* Connexion à la base de données avec
+- Connexion à la base de données avec
 ```php
 $db = new DbConnection;
 ```
-⋅⋅* Ensuite j'affiche les 3 articles les plus récents avec une requête SQL
+- Ensuite j'affiche les 3 articles les plus récents avec une requête SQL
 ```php
 foreach ($rows as $row) {
         <div class="mt-16 mb-8 p-5 items-center bg-purple-300 rounded-lg shadow-lg hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
