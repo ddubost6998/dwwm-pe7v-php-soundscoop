@@ -37,7 +37,7 @@ $stmt = $pdo->query("SELECT * FROM article");
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<main class="prose mx-auto mt-24">
+<main class="prose mx-auto mt-36">
     <div class="grid grid-cols-3 justify-items-stretch text-center">
         <h1>Admin</h1>
         <hr class="w-auto h-3 mt-3 rounded-full bg-purple-200 dark:bg-purple-700">
@@ -76,7 +76,7 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <label for="url_img">URL de l'image</label>
             <input type="text" name="url_img" id="url_img" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            <button type="submit" class="mt-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Ajouter l'article</button>
+            <button type="submit" class="mt-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Ajouter l'article</button>
         </form>
     </div>
 </main>

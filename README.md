@@ -1,15 +1,15 @@
 # SoundScoop
 
 ## Informations
-Nom de la base de données : soundscoop
-Nom utilisateur : hb_lucas
-Mot de passe : C_Pkcx48x95zoCok
+⋅⋅* Nom de la base de données : soundscoop
+⋅⋅* Nom utilisateur : hb_lucas
+⋅⋅* Mot de passe : C_Pkcx48x95zoCok
 
 Le fichier .sql se situe dans le dossier data
 
 ## Connexion admin
-Email : lucas@gmail.com
-Mot de passe : test
+⋅⋅* Email : lucas@gmail.com
+⋅⋅* Mot de passe : test
 
 ## Ajout du dossier layout
 Insertion des fichier ```header.php / nav.php / footer.php``` pour pouvoir les ```require_once``` dans chaque page.
@@ -65,3 +65,16 @@ try {
     }
 ```
 D'abord je me connecte à la base de données puis je prépare la requête SQL pour l'executer avec execute([]) puis je redirige sur admin.php sinon un message d'erreur s'affiche
+
+
+## Page d'accueil dans index.php
+
+⋅⋅* Connexion à la base de données avec
+```php
+$db = new DbConnection;
+```
+⋅⋅* Ensuite j'affiche les 3 articles les plus récents avec une requête SQL
+```php
+
+```
+
