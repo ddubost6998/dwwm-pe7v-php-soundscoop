@@ -27,7 +27,6 @@ $connectStmt = $pdo->prepare($query);
 $connectStmt->execute([$email]);
 
 $user = $connectStmt->fetch();
-
 if ($user === false) {
     Utils::redirect('login.php?error=' . urlencode(AppError::USER_NOT_FOUND));
 }

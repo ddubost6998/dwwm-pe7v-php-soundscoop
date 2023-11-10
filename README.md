@@ -1,6 +1,6 @@
 # SoundScoop | Actu musicale
 
-## ![alt text](https://cdn-icons-png.flaticon.com/512/497/497738.png "Logo Title Attention") Informations
+## ℹ️ Informations
 - Nom de la base de données : soundscoop
 - Nom utilisateur : hb_lucas
 - Mot de passe : C_Pkcx48x95zoCok
@@ -11,12 +11,14 @@ Le fichier .sql se situe dans le dossier data
 - Email : lucas@gmail.com
 - Mot de passe : test
 
-## Ajout du dossier layout
+---
+
+## 📁 Dossier layout
 - Création d'un fichier ```header.php``` permettant l'insertion des balises meta
 - Création d'un fichier ```nav.php``` permettant l'insertion de la navbar dans les pages
 - Création d'un fichier ```footer.php``` permettant l'insertion du footer dans les pages pour pouvoir les ```require_once``` dans chaque page.
 
-## Ajout de la méthode statique Utils dans une classe
+## Méthode statique Utils dans une classe
 La classe Utils permet de rediriger l'utilisateur vers un emplacement donnée avec la fonction redirect.
 
 ## Ajout de la classe DbConnection
@@ -43,21 +45,6 @@ Permet de gérer les gestions d'erreurs des emails.
 ```
 
 - J'ai créer une classe MenuItem qui permet de choisir soit le CSS actif ou inactif.
-
-## Ajout d'un article
-Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir ```title, content, issue_date, user_id, url_img``` 
-Pour le process de l'ajout de l'article j'ai ajouter une page add_article pour l'insertion de l'article dans la base de donnée avec
-```php
-try {
-        $pdo = new DbConnection;
-        $stmt = $pdo->prepare("INSERT INTO article (title, content, issue_date, user_id, url_img) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$title, $content, $issue_date, $user_id, $url_img]);
-        Utils::redirect('admin.php');
-    } catch (PDOException $e) {
-        echo "Une erreur s'est produite : " . $e->getMessage();
-    }
-```
-D'abord je me connecte à la base de données puis je prépare la requête SQL pour l'executer avec execute([]) puis je redirige sur admin.php sinon un message d'erreur s'affiche
 
 ---
 
@@ -118,27 +105,132 @@ Utils::redirect("contact.php");
 
 ## Balises meta de Twitter et Facebook
 - Dans la page article.php j'ai ajouté les balises dynamique de Twitter :
-```
+```html
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+<meta name="twitter:image" content="<?= $url_img ?>">
+<meta name="twitter:description" content="<?= htmlspecialchars($content, ENT_QUOTES, 'UTF-8') ?>">
 ```
 
 et Facebook :
-```
+```html
+<meta property="og:title" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+<meta property="og:image" content="<?= $url_img ?>">
+<meta property="og:description" content="<?= htmlspecialchars($content, ENT_QUOTES, 'UTF-8') ?>">
 ```
 
 ---
 
 ## Partie admin
 
-## Formulaire de connexion de l'admin
-Dans le ```<form>``` j'ajoute l'atribut action pour l'envoyer à la page de process login_success et la méthode POST pour ne pas divulguer les infos de connexion.
+## Formulaire de connexion admin
+- Dans formulaire j'ajoute l'atribut action pour l'envoyer à la page de process login_success et la méthode POST pour ne pas divulguer les infos de connexion.
+```php
+<form action="login_process.php" method="POST" class="space-y-4 md:space-y-6">
+```
 
-Dans login_process.php
+- Dans login_process.php
+
+Je démarre la session avec :
+```php
+session_start();
+```
+
 Je vérifie si la requête HTTP est une requête POST et redirige vers login.php si la condition n'est pas satisfaite.
+```php
+if (!isset($_POST['email']) || !isset($_POST['password'])) {
+    Utils::redirect('login.php?error=' . AppError::AUTH_REQUIRED_FIELDS);
+}
+```
+
+Je récupére les données du formulaire :
+```php
+[
+    'email'    => $email,
+    'password' => $password
+] = $_POST;
+```
+
+Connexion avec la base de données avec un try / catch :
+```php
+try {
+    $pdo = new DbConnection;
+} catch (PDOException) {
+    Utils::redirect('login.php?error=' . AppError::DB_CONNECTION);
+}
+```
+
+Je récupére l'utilisateur avec une requête query :
+```php
+$query = "SELECT * FROM user WHERE email = ?";
+```
+
+Pour la préparer et l'executé ensuite :
+```php
+$connectStmt = $pdo->prepare($query);
+$connectStmt->execute([$email]);
+```
+
+Je vérifie si l'utilisateur existe :
+```php
+$user = $connectStmt->fetch();
+if ($user === false) {
+    Utils::redirect('login.php?error=' . urlencode(AppError::USER_NOT_FOUND));
+}
+```
+
+Enfin je vérifie ses informations d'identification :
+```php
+if ($user !== false && password_verify($password, $user['password'])) {
+    $_SESSION['id_user'] = [
+        'id_user' => $user['id_user'],
+        'email'   => $email
+    ];
+    Utils::redirect('admin.php');
+} else {
+    Utils::redirect('login.php?error=' . urlencode(AppError::INVALID_CREDENTIALS));
+}
+```
 
 ## Ajout d'un script PHP update_password
 Le script permet de hacher un mot de passe déjà enregistrer dans base de données.
 
 Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
 
+## Ajout d'un article
+- Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir 
+```php
+$stmt = $pdo->prepare("INSERT INTO article (title, content, issue_date, user_id, url_img) VALUES (?, ?, ?, ?, ?)");
+``` 
+
+- Pour le process de l'ajout de l'article j'ai ajouter une page add_article pour l'insertion de l'article dans la base de donnée avec
+```php
+try {
+        $pdo = new DbConnection;
+        $stmt = $pdo->prepare("INSERT INTO article (title, content, issue_date, user_id, url_img) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$title, $content, $issue_date, $user_id, $url_img]);
+        Utils::redirect('admin.php');
+    } catch (PDOException $e) {
+        echo "Une erreur s'est produite : " . $e->getMessage();
+    }
+```
+D'abord je me connecte à la base de données puis je prépare la requête SQL pour l'executer avec execute([]) puis je redirige sur admin.php sinon un message d'erreur s'affiche
+
 ## Ajout de la déconnexion pour l'admin
 Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logout=1">Déconnexion</a>``` 
+
+---
+
+## Mes dificultés
+
+- J'ai pris beaucoup de temps pour la modification d'un article côté admin mais aussi sur la pagination des articles.
+
+---
+
+## À amélioré et ajouté
+
+- Je pourrais par la suite refactoriser toutes mes fonctions dans des classes pour réduire la longueur du code dans les pages d'affichage.
+
+- Je pourrais ajouté une barre de recherche pour rechercher un article à partir de la base de données.
+
+- Je pourrais ajouté un compte d'un utilisateur ainsi que la possibilité d'ajouté des commentaire dans un article.
