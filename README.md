@@ -7,7 +7,7 @@
 
 Le fichier .sql se situe dans le dossier data
 
-- Connexion admin
+### Connexion admin
 - Email : *lucas@gmail.com*
 - Mot de passe : ~~test~~
 
