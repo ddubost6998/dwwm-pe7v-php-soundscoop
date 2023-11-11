@@ -2,14 +2,14 @@
 
 ## ℹ️ Informations
 - Nom de la base de données : soundscoop
-- Nom utilisateur : hb_lucas
-- Mot de passe : C_Pkcx48x95zoCok
+- Nom utilisateur : *hb_lucas*
+- Mot de passe : ~~C_Pkcx48x95zoCok~~
 
 Le fichier .sql se situe dans le dossier data
 
 - Connexion admin
-- Email : lucas@gmail.com
-- Mot de passe : test
+- Email : *lucas@gmail.com*
+- Mot de passe : ~~test~~
 
 ---
 
