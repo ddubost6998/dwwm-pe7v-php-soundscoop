@@ -54,7 +54,7 @@ Permet de gérer les gestions d'erreurs des emails.
 ```php
 $db = new DbConnection;
 ```
-- Ensuite j'affiche les 3 articles les plus récents avec une requête SQL avec les informations dynamique
+- Ensuite j'affiche les 3 articles les plus récents avec une requête SQL avec les informations dynamique en insérant du php dans le html
 ```php
 foreach ($rows as $row) {
         <div class="mt-16 mb-8 p-5 items-center bg-purple-300 rounded-lg shadow-lg hover:bg-purple-200 dark:border-gray-700 dark:bg-gray-800 dark:hover-bg-gray-700">
@@ -136,7 +136,7 @@ Je démarre la session avec :
 session_start();
 ```
 
-Je vérifie si la requête HTTP est une requête POST et redirige vers login.php si la condition n'est pas satisfaite.
+Je vérifie si la requête HTTP est une requête POST et redirige vers login.php si la condition n'est pas correct.
 ```php
 if (!isset($_POST['email']) || !isset($_POST['password'])) {
     Utils::redirect('login.php?error=' . AppError::AUTH_REQUIRED_FIELDS);
@@ -160,7 +160,7 @@ try {
 }
 ```
 
-Je récupére l'utilisateur avec une requête query :
+Je récupére l'utilisateur avec une requête SQL dans la variable $query :
 ```php
 $query = "SELECT * FROM user WHERE email = ?";
 ```
@@ -237,3 +237,5 @@ Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logo
 - Je pourrais ajouté une barre de recherche pour rechercher un article à partir de la base de données.
 
 - Je pourrais ajouté un compte d'un utilisateur ainsi que la possibilité d'ajouté des commentaire dans un article.
+
+- Afficher l'image de l'article dans la page individuel d'un article
