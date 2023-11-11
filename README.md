@@ -20,12 +20,72 @@ Le fichier .sql se situe dans le dossier data
 
 ## Méthode statique Utils dans une classe
 La classe Utils permet de rediriger l'utilisateur vers un emplacement donnée avec la fonction redirect.
+```php
+class Utils
+{
+    public static function redirect(string $location): void
+    {
+        header('Location: ' . $location);
+        exit;
+    }
+}
+```
 
 ## Ajout de la classe DbConnection
 Pour lier la connexion avec la base de données je créer une classe DbConnection pour pouvoir la récupérer sur plusieurs pages.
+```php
+class Utils
+class DbConnection extends PDO
+{
+    public function __construct() {
+        $dbConfig = parse_ini_file(__DIR__ . '/../config/db.ini');
+
+        [
+            'DB_HOST'     => $host,
+            'DB_PORT'     => $port,
+            'DB_NAME'     => $dbName,
+            'DB_CHARSET'  => $dbCharset,
+            'DB_USER'     => $user,
+            'DB_PASSWORD' => $password
+        ] = $dbConfig;
+
+        $dsn = "mysql:host=$host;port=$port;dbname=$dbName;charset=$dbCharset";
+
+        parent::__construct($dsn, $user, $password, [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+    }
+}
+```
 
 ## Ajout de la classe AppError
 Permet de nommer clairement les erreurs lié à la connexion.
+```php
+class AppError
+{
+    public const DB_CONNECTION        = 0;
+    public const AUTH_REQUIRED_FIELDS = 1;
+    public const INVALID_CREDENTIALS  = 2;
+    public const USER_NOT_FOUND       = 3;
+
+    public static function getErrorMessage($errorCode)
+    {
+        switch ($errorCode) {
+            case self::DB_CONNECTION:
+                return "Erreur de connexion à la base de données.";
+            case self::AUTH_REQUIRED_FIELDS:
+                return "Veuillez remplir tous les champs.";
+            case self::INVALID_CREDENTIALS:
+                return "Identifiants invalides. Veuillez réessayer.";
+            case self::USER_NOT_FOUND:
+                return "Utilisateur non trouvé. Veuillez vérifier votre adresse email.";
+            default:
+                return "Erreur inconnue.";
+        }
+    }
+}
+```
 
 ## Ajout de la classe ErrorEmails
 Permet de gérer les gestions d'erreurs des emails.
@@ -101,6 +161,22 @@ $_SERVER["REQUEST_METHOD"] == "POST"
 Sinon je reviens dans la page contact.php
 ```php
 Utils::redirect("contact.php");
+```
+
+## Page catégories
+
+- Je tri les article par catégories pour facilité la visibilité par type d'article
+Pour cela je fait un INNER JOIN avec la table article_cagorie pour relier le nom de la catégorie avec l'article
+```php
+$stmt = $pdo->prepare("SELECT article.*, categorie.name_categorie
+                        FROM article
+                        INNER JOIN article_categorie ON article.id_article = article_categorie.article_id
+                        INNER JOIN categorie ON article_categorie.categorie_id = categorie.id_categorie
+                        WHERE categorie.id_categorie = :cat_id
+                        ORDER BY article.issue_date DESC");
+            $stmt->bindParam(':cat_id', $category['id_categorie'], PDO::PARAM_INT);
+            $stmt->execute();
+            $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ```
 
 ## Balises meta de Twitter et Facebook
@@ -198,6 +274,23 @@ Le script permet de hacher un mot de passe déjà enregistrer dans base de donn�
 
 Pour hacher les mot de passe il suffit d'aller dans l'URL avec /scripts/update_password.php.
 
+```php
+foreach ($users as $user) {
+    $id = $user['id_user'];
+    $password = $user['password'];
+
+    if (!password_verify($password, $user['password'])) {
+
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        $updateQuery = $db->prepare("UPDATE user SET password = :hashedPassword WHERE id_user = :id");
+        $updateQuery->bindParam(':id', $id);
+        $updateQuery->bindParam(':hashedPassword', $hashedPassword);
+        $updateQuery->execute();
+    }
+}
+```
+
 ## Ajout d'un article
 
 - Dans la page admin on peut ajouter un nouvel article avec toute les infos à remplir dans un formulaire
@@ -238,4 +331,6 @@ Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logo
 
 - Je pourrais ajouté un compte d'un utilisateur ainsi que la possibilité d'ajouté des commentaire dans un article.
 
-- Afficher l'image de l'article dans la page individuel d'un article
+- Afficher l'image de l'article dans la page individuel d'un article.
+
+- Créer une classe ItemArticle pour afficher les articles dans une méthode displayArticle().
