@@ -86,9 +86,6 @@ class AppError
 }
 ```
 
-## Ajout de la classe ErrorEmails
-Permet de gérer les gestions d'erreurs des emails.
-
 ## Navbar dynamique
 
 - J'ai rendu la navbar dynamique pour que la page sur laquelle on consulte soit en violet et grisé pour les autres.
