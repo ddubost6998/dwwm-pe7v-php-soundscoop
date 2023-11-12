@@ -317,6 +317,8 @@ Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logo
 
 - J'ai pris beaucoup de temps pour la modification d'un article côté admin mais aussi sur la pagination des articles.
 
+- Afficher l'ensemble des articles mais par catégorie n'était pas évident pour moi.
+
 ---
 
 ## À amélioré et à ajouté
