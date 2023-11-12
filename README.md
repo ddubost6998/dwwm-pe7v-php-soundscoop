@@ -34,7 +34,6 @@ class Utils
 ## Ajout de la classe DbConnection
 Pour lier la connexion avec la base de données je créer une classe DbConnection pour pouvoir la récupérer sur plusieurs pages.
 ```php
-class Utils
 class DbConnection extends PDO
 {
     public function __construct() {
