@@ -325,6 +325,8 @@ Dans la page admin.php j'ajoute le bouton de déconnexion avec ```<a href="?logo
 
 ## À amélioré et à ajouté
 
+- Supprimer le problème de quand je souhaite ajouté un article qu'il s'affiche sans que je soit obliger de lui rattacher une catégorie ou artiste.
+
 - Je pourrais par la suite refactoriser toutes mes fonctions dans des classes pour réduire la longueur du code dans les pages d'affichage.
 
 - Je pourrais ajouté une barre de recherche pour rechercher un article à partir de la base de données.
